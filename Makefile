@@ -6,7 +6,7 @@
 #    By: ahmaymou <ahmaymou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/14 12:57:57 by ahmaymou          #+#    #+#              #
-#    Updated: 2022/12/15 16:17:58 by ahmaymou         ###   ########.fr        #
+#    Updated: 2022/12/15 16:37:26 by ahmaymou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ NAME = minitalk
 NAME_S = server
 NAME_C = client
 
-SRC_C = client.c
-SRC_S = server.c
+SRC_C = client_dir/client.c
+SRC_S = server_dir/server.c
 
 FLAGS = -Wall -Werror -Wextra
 
@@ -40,13 +40,13 @@ server : minitalk.h
 client : minitalk.h
 	$(GCC) $(FLAGS) $(SRC_C) $(LIBS) -o $(NAME_C)
 	@$(echo1)
-	@rm -rf libft.a libftprintf.a
+	@rm -rf $(LIBS)
 
 clean :
 	@rm -rf $(OBJ) libft/*.o printf/*.o
 
 fclean : clean
-	@rm -rf $(NAME_C) $(NAME_S)
+	@rm -rf $(NAME_C) $(NAME_S) $(LIBS)
 
 re :fclean all
 
