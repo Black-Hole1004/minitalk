@@ -6,7 +6,7 @@
 #    By: ahmaymou <ahmaymou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/14 12:57:57 by ahmaymou          #+#    #+#              #
-#    Updated: 2022/12/15 16:37:26 by ahmaymou         ###   ########.fr        #
+#    Updated: 2022/12/16 19:57:24 by ahmaymou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,10 +34,10 @@ libft_printf :
 	@cd libft && make bonus && mv libft.a ..
 	@cd printf && make && mv libftprintf.a .. && cd ..
 
-server : minitalk.h
+server : $(SRC_S) minitalk.h
 	$(GCC) $(FLAGS) $(SRC_S) $(LIBS) -o $(NAME_S)
 
-client : minitalk.h
+client : $(SRC_C) minitalk.h
 	$(GCC) $(FLAGS) $(SRC_C) $(LIBS) -o $(NAME_C)
 	@$(echo1)
 	@rm -rf $(LIBS)

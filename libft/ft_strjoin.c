@@ -6,7 +6,7 @@
 /*   By: ahmaymou <ahmaymou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 11:05:21 by ahmaymou          #+#    #+#             */
-/*   Updated: 2022/11/12 21:01:13 by ahmaymou         ###   ########.fr       */
+/*   Updated: 2022/12/16 18:25:06 by ahmaymou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char				*to_return;
 	unsigned int		i;
 	unsigned int		len;
-
 
 	if (!s1 || !s2)
 		return (NULL);
