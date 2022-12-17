@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahmaymou <ahmaymou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/14 12:57:54 by ahmaymou          #+#    #+#             */
-/*   Updated: 2022/12/17 14:53:58 by ahmaymou         ###   ########.fr       */
+/*   Created: 2022/12/16 20:21:08 by ahmaymou          #+#    #+#             */
+/*   Updated: 2022/12/17 19:34:38 by ahmaymou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-◦ write
-◦ ft_printf and any equivalent YOU coded
-◦ signal
-◦ sigemptyset
-◦ sigaddset
-◦ sigaction
-◦ kill
-◦ getpid
-◦ malloc
-◦ free
-◦ pause
-◦ sleep
-◦ usleep
-◦ exit 
-*/
 #include "../minitalk.h"
+
+void	handle_usr1(int sig)
+{
+	if (sig == 30)
+		printf("yes\n");
+}
 
 void	char_bin(char *p, int c)
 {
@@ -36,20 +26,17 @@ void	char_bin(char *p, int c)
 	while (i--)
 	{
 		if (c & (1 << i))
-		{
 			kill(ft_atoi(p), SIGUSR1);
-		}
 		else
-		{
 			kill(ft_atoi(p), SIGUSR2);
-		}
 		usleep(500);
+		signal(SIGUSR1, handle_usr1);
 	}
 }
 
 int	main(int arc, char **argv)
 {
-	char	*message;
+	char				*message;
 
 	if (arc < 3)
 	{
@@ -62,5 +49,6 @@ int	main(int arc, char **argv)
 		char_bin(argv[1], *message);
 		message++;
 	}
+	char_bin(argv[1], *message);
 	return (0);
 }

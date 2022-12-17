@@ -1,31 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahmaymou <ahmaymou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/14 12:58:00 by ahmaymou          #+#    #+#             */
-/*   Updated: 2022/12/17 17:44:20 by ahmaymou         ###   ########.fr       */
+/*   Created: 2022/12/16 20:21:11 by ahmaymou          #+#    #+#             */
+/*   Updated: 2022/12/17 19:24:39 by ahmaymou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-◦ write
-◦ ft_printf and any equivalent YOU coded
-◦ signal
-◦ sigemptyset
-◦ sigaddset
-◦ sigaction
-◦ kill
-◦ getpid
-◦ malloc
-◦ free
-◦ pause
-◦ sleep
-◦ usleep
-◦ exit 
-*/
 #include "../minitalk.h"
 
 void	handle_sigusr1(int sig, siginfo_t *info, void *context)
@@ -47,6 +31,8 @@ void	handle_sigusr1(int sig, siginfo_t *info, void *context)
 		bin_char += (1 << i);
 	if (!i)
 	{
+		if (bin_char == 0)
+			kill(pid, SIGUSR1);
 		ft_printf("%c", bin_char);
 		i = 7;
 		bin_char = 0;
@@ -59,19 +45,15 @@ int	main(void)
 {
 	pid_t				pid;
 	struct sigaction	sa;
-	struct sigaction	sa2;
 
 	pid = getpid();
 	ft_printf("%d\n", pid);
 	sa.sa_flags = SA_SIGINFO;
 	sa.sa_flags = SA_RESTART;
 	sa.sa_sigaction = handle_sigusr1;
-	sa2.sa_flags = SA_SIGINFO;
-	sa2.sa_flags = SA_RESTART;
-	sa2.sa_sigaction = handle_sigusr1;
 	if (sigaction(SIGUSR1, &sa, 0) < 0)
 		return (EXIT_FAILURE);
-	if (sigaction(SIGUSR2, &sa2, 0) < 0)
+	if (sigaction(SIGUSR2, &sa, 0) < 0)
 		return (EXIT_FAILURE);
 	while (1)
 		pause ();
