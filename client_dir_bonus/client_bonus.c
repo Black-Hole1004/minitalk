@@ -6,7 +6,7 @@
 /*   By: ahmaymou <ahmaymou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 20:21:08 by ahmaymou          #+#    #+#             */
-/*   Updated: 2022/12/17 19:34:38 by ahmaymou         ###   ########.fr       */
+/*   Updated: 2022/12/17 19:44:00 by ahmaymou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	handle_usr1(int sig)
 {
 	if (sig == 30)
-		printf("yes\n");
+		printf("got the acknowledgement , message sent successfully !\n");
 }
 
 void	char_bin(char *p, int c)
