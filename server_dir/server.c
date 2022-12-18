@@ -6,7 +6,7 @@
 /*   By: ahmaymou <ahmaymou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 12:58:00 by ahmaymou          #+#    #+#             */
-/*   Updated: 2022/12/17 17:44:20 by ahmaymou         ###   ########.fr       */
+/*   Updated: 2022/12/18 12:53:48 by ahmaymou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,19 +59,14 @@ int	main(void)
 {
 	pid_t				pid;
 	struct sigaction	sa;
-	struct sigaction	sa2;
 
 	pid = getpid();
 	ft_printf("%d\n", pid);
 	sa.sa_flags = SA_SIGINFO;
-	sa.sa_flags = SA_RESTART;
 	sa.sa_sigaction = handle_sigusr1;
-	sa2.sa_flags = SA_SIGINFO;
-	sa2.sa_flags = SA_RESTART;
-	sa2.sa_sigaction = handle_sigusr1;
 	if (sigaction(SIGUSR1, &sa, 0) < 0)
 		return (EXIT_FAILURE);
-	if (sigaction(SIGUSR2, &sa2, 0) < 0)
+	if (sigaction(SIGUSR2, &sa, 0) < 0)
 		return (EXIT_FAILURE);
 	while (1)
 		pause ();

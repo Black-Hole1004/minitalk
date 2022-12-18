@@ -6,7 +6,7 @@
 /*   By: ahmaymou <ahmaymou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 20:21:11 by ahmaymou          #+#    #+#             */
-/*   Updated: 2022/12/17 19:24:39 by ahmaymou         ###   ########.fr       */
+/*   Updated: 2022/12/18 12:53:57 by ahmaymou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int	main(void)
 	pid = getpid();
 	ft_printf("%d\n", pid);
 	sa.sa_flags = SA_SIGINFO;
-	sa.sa_flags = SA_RESTART;
 	sa.sa_sigaction = handle_sigusr1;
 	if (sigaction(SIGUSR1, &sa, 0) < 0)
 		return (EXIT_FAILURE);
