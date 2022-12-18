@@ -6,7 +6,7 @@
 #    By: ahmaymou <ahmaymou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/14 12:57:57 by ahmaymou          #+#    #+#              #
-#    Updated: 2022/12/17 19:39:55 by ahmaymou         ###   ########.fr        #
+#    Updated: 2022/12/18 13:08:32 by ahmaymou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRC_C_B = client_dir_bonus/client_bonus.c
 
 FLAGS = -Wall -Werror -Wextra
 
-GCC = gcc
+CC = cc
 
 LIBS = libft.a libftprintf.a
 
@@ -40,10 +40,10 @@ libft_printf :
 	@cd printf && make && mv libftprintf.a .. && cd ..
 
 server : $(SRC_S) minitalk.h
-	$(GCC) $(FLAGS) $(SRC_S) $(LIBS) -o $(NAME_S)
+	$(CC) $(FLAGS) $(SRC_S) $(LIBS) -o $(NAME_S)
 
 client : $(SRC_C) minitalk.h
-	$(GCC) $(FLAGS) $(SRC_C) $(LIBS) -o $(NAME_C)
+	$(CC) $(FLAGS) $(SRC_C) $(LIBS) -o $(NAME_C)
 	@$(echo1)
 	@rm -rf $(LIBS)
 
@@ -51,10 +51,10 @@ client : $(SRC_C) minitalk.h
 bonus : libft_printf client_bonus server_bonus
 
 client_bonus: $(SRC_C_B) minitalk.h
-	$(GCC) $(FLAGS) $(SRC_C_B) $(LIBS) -o $(NAME_C_B)
+	$(CC) $(FLAGS) $(SRC_C_B) $(LIBS) -o $(NAME_C_B)
 
 server_bonus: $(SRC_S_B) minitalk.h
-	$(GCC) $(FLAGS) $(SRC_S_B) $(LIBS) -o $(NAME_S_B)
+	$(CC) $(FLAGS) $(SRC_S_B) $(LIBS) -o $(NAME_S_B)
 	@$(echo1)
 	@rm -rf $(LIBS)
 
